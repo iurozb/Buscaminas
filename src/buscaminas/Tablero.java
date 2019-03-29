@@ -64,7 +64,7 @@ public class Tablero {
         for (int i = 0; i < numFilas; i++) {
             System.out.println(i + "|");
             for (int j = 0; j < numColumnas; j++) {
-                System.out.println(/*tabla[i][j].imprimirPrueba() + " "*/);
+                System.out.println(tabla[i][j].imprimirPrueba() + " ");
             }
             System.out.println("|" + i);
             System.out.println("");
@@ -118,5 +118,9 @@ public class Tablero {
                 
             }
         }
+    }
+    
+    public void getCasilla(){
+        
     }
 }
