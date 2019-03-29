@@ -9,4 +9,10 @@ public class Juego {
     private int numMInas;
     private Tablero tablero;
     
+    
+    public void configurarJuego(){
+        
+        
+    }
+    
 }
