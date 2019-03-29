@@ -37,6 +37,26 @@ public class Casilla {
         return visible;
     }
 
+    public String imprimirPrueba(){
+        String sol = "*";
+        
+        if(bandera){
+            return "B";
+        }
+        
+        if(mina){
+            return "M";
+        }
+        
+        if(numero > 0){
+            sol = "" + numero;
+        }
+        return sol;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
     
     
     

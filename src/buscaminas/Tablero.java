@@ -2,6 +2,7 @@
 package buscaminas;
 
 import java.util.Random;
+import java.util.Scanner;
 
 
 public class Tablero {
@@ -50,25 +51,32 @@ public class Tablero {
          
         }
     }
-    /*
+    
     public void imprimirPrueba(){
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if(tabla[i][j].isBlanco()){
-                    System.out.println("");
-                }else if(tabla[i][j].isMina()){
-                    System.out.println("M");
-                }else {
-                    System.out.println(tabla[i][j].getNumero());
-                }
-                
-                System.out.println(" | ");
-            }
-            System.out.println("\n");
-        }
         
+        System.out.println("  ");
+        for (int i = 0; i < numColumnas; i++) {
+            System.out.println(i + "|");
+        }
+        System.out.println(" ");
+        
+        
+        for (int i = 0; i < numFilas; i++) {
+            System.out.println(i + "|");
+            for (int j = 0; j < numColumnas; j++) {
+                System.out.println(/*tabla[i][j].imprimirPrueba() + " "*/);
+            }
+            System.out.println("|" + i);
+            System.out.println("");
+        }
+        System.out.println("  ");
+        
+        for (int i = 0; i < numColumnas; i++) {
+            System.out.println(i + " ");
+        }
+        System.out.println("");
     }
-    */
+    
     
     public void colocarCasillas(){
         for (int i = 0; i < numFilas; i++) {
@@ -76,6 +84,38 @@ public class Tablero {
                 if(!tabla[i][j].isMina()){
                     
                 }
+            }
+        }
+    }
+    
+    public int calculaMinasCasilla(int fila, int columna){
+        
+        int num = 0;
+        
+        for (int i = fila - 1; i <= fila + 1; i++) {
+            if(i >= 0 && i < numFilas){
+                for (int j = columna - 1; j <= columna + 1; j++) {
+                    if((j >= 0 && j < numColumnas) && (tabla[i][j].isMina())){
+                        num++;
+                    }
+                }
+            }
+        }
+        
+        return num;
+    }
+    
+    public void calcularTablero(){
+        
+        Scanner leer = new Scanner(System.in);
+        
+        for (int i = 0; i < numFilas; i++) {
+            for (int j = 0; j < numColumnas; j++) {
+                
+                if(!tabla[i][j].isMina()){
+                    tabla[i][j].setNumero(calculaMinasCasilla(leer.nextInt(), leer.nextInt()));
+                }
+                
             }
         }
     }
