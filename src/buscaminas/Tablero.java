@@ -30,7 +30,6 @@ public class Tablero {
                 tabla[i][j] = new Casilla();
             }
         }
-        
     }
     
     //Método para insertar minas en el tablero aleatoriamente
@@ -48,7 +47,6 @@ public class Tablero {
                 tabla[fila][columna].setMina(true);
                 numMinas--;
             }
-         
         }
     }
     
@@ -81,8 +79,7 @@ public class Tablero {
     public void colocarCasillas(){
         for (int i = 0; i < numFilas; i++) {
             for (int j = 0; j < numColumnas; j++) {
-                if(!tabla[i][j].isMina()){
-                    
+                if(!tabla[i][j].isMina()){   
                 }
             }
         }
@@ -101,7 +98,7 @@ public class Tablero {
                 }
             }
         }
-        
+      
         return num;
     }
     
@@ -115,7 +112,6 @@ public class Tablero {
                 if(!tabla[i][j].isMina()){
                     tabla[i][j].setNumero(calculaMinasCasilla(leer.nextInt(), leer.nextInt()));
                 }
-                
             }
         }
     }
@@ -147,13 +143,13 @@ public class Tablero {
  
     }
  
-       public void quitarBandera(int filas, int columnas){
+        public void quitarBandera(int filas, int columnas){
         boolean fin=true;
         if(tabla[filas][columnas].isBandera()){
             
             tabla[filas][columnas].setBandera(false);
             tabla[filas][columnas].setVisible(false);
             }
-    }
+        }
     
 }

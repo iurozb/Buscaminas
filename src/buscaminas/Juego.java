@@ -30,8 +30,6 @@ public class Juego {
         System.out.println("Dime la cantidad de minas con las que quieres jugar");
         numMInas = leer.nextInt();  
         iniciarJuego();
-        
-        
        
     }
     
@@ -41,7 +39,6 @@ public class Juego {
         tablero = new Tablero(numFilas, numColumnas, numMInas);
         tablero.insertarMinas(numMInas);
         tablero.calcularTablero();
-        //tablero.imprimirPrueba();
         System.out.println("");
         tablero.imprimirPrueba();
         System.out.println("");
@@ -80,39 +77,44 @@ public class Juego {
             switch(opcion){
                 case 1: 
                         Scanner leer = new Scanner(System.in);
-                        System.out.println("Dame las coordenadas(fila,columnas)");
+                        System.out.println("Dime las coordenadas(fila,columnas)");
+                        
                         filas=leer.nextInt();
                         columnas=leer.nextInt();
+                        
                         if(coordenadasCorrectas(filas, columnas)){
                            tablero.getCasilla(filas, columnas);
                            descubrirCasilla(filas, columnas);
                            tablero.imprimirPrueba();
+                           
                            if(partidaGanada()==true){
-                                System.out.println("***********************");
-                                System.out.println("    VICTORIA ROYALE    ");
-                                System.out.println("***********************");
+                                System.out.println("ganaste wey");
                                 System.exit(1);
                             }
                         }
                     break;
                     case 2:
                         Scanner leer2 = new Scanner(System.in);
-                        System.out.println("Dame las coordenadas(fila,columnas)");
+                        System.out.println("Dime las coordenadas(fila,columnas)");
                         filas=leer2.nextInt();
                         columnas=leer2.nextInt();
+                        
                         if(coordenadasCorrectas(filas, columnas)){
                            tablero.getCasilla(filas, columnas);
                            descubrirBandera(filas, columnas);
                            tablero.imprimirPrueba(); 
                         };
                         break;
+                        
                     case 3:
                         Scanner leer3 = new Scanner(System.in);
-                        System.out.println("Dame las coordenadas(fila,columnas)");
+                        System.out.println("Dime las coordenadas(fila,columnas)");
+                        
                         filas=leer3.nextInt();
                         columnas=leer3.nextInt();
+                        
                         if(coordenadasCorrectas(filas, columnas)){
-                           tablero.getCasilla(filas, columnas);
+                            tablero.getCasilla(filas, columnas);
                             quitarBandera(filas, columnas);
                             tablero.imprimirPrueba(); 
                         };
@@ -125,21 +127,18 @@ public class Juego {
     
     private void descubrirCasilla(int filas, int columnas){
         if(tablero.meterCasilla(filas,columnas)==false){
-            acabarJuegoMina();
+            acabarJuego();
             tablero.imprimirPrueba();
             System.exit(0);
         };
-        
     }
     
     private void descubrirBandera(int filas, int columnas){
         tablero.meterBandera(filas,columnas);
-
     }
    
      private void quitarBandera(int filas, int columnas){
         tablero.quitarBandera(filas,columnas);
-
     }
     
     
@@ -172,34 +171,27 @@ public class Juego {
         return bandera;
     }
     
-      private boolean partidaGanada(){
-        boolean ganado = comprobarVictoria();
+    public boolean partidaGanada(){
+        boolean ganado=true;
+        for (int i = 0; i < numFilas; i++) {
+            for (int j = 0; j < numColumnas; j++) {
+                if(tablero.getCasilla(i, j).isMina()){
+                       
+                }else{
+                    if(tablero.getCasilla(i, j).isVisible()){
+                           
+                    }else{
+                        ganado=false; 
+                        break;
+                    }
+                }
+            }
+        }
         return ganado;
     }
-      
-      public boolean comprobarVictoria(){
-           boolean ganado=true;
-           for (int i = 0; i < numFilas; i++) {
-               for (int j = 0; j < numColumnas; j++) {
-                   if(tablero.getCasilla(i, j).isMina()){
-                       
-                   }else{
-                       if(tablero.getCasilla(i, j).isVisible()){
-                           
-                       }else{
-                          ganado=false; 
-                          break;
-                       }
-                   }
-               }
-           }
-           return ganado;
-}
     
-    private void acabarJuegoMina(){
-        
+    private void acabarJuego(){
         System.out.println("    |game over muk|   ");
-        
     }
 
 
