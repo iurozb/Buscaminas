@@ -120,9 +120,12 @@ public class Tablero {
         }
     }
     
-    public void getCasilla(){
+    public Casilla getCasilla(int fila, int columna){
+        
         return this.tabla[fila][columna];
     }
+    
+    
     public boolean meterCasilla(int filas, int columnas){
         boolean fin=true;
         if(tabla[filas][columnas].isMina()){

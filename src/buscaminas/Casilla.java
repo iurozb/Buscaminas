@@ -57,6 +57,18 @@ public class Casilla {
     public void setNumero(int numero) {
         this.numero = numero;
     }
+
+    public void setBandera(boolean bandera) {
+        this.bandera = bandera;
+    }
+
+    public void setBlanco(boolean blanco) {
+        this.blanco = blanco;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
     
     
     
