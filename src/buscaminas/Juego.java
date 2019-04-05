@@ -89,7 +89,7 @@ public class Juego {
                         if(coordenadasCorrectas(filas, columnas)){
                            tablero.getCasilla(filas, columnas);
                            descubrirCasilla(filas, columnas);
-                           mostrarTablero(); 
+                           tablero.imprimirPrueba();
                            if(partidaGanada()==true){
                                 System.out.println("***********************");
                                 System.out.println("    VICTORIA ROYALE    ");
@@ -106,7 +106,7 @@ public class Juego {
                         if(coordenadasCorrectas(filas, columnas)){
                            tablero.getCasilla(filas, columnas);
                            descubrirBandera(filas, columnas);
-                           mostrarTablero(); 
+                           tablero.imprimirPrueba(); 
                         };
                         break;
                     case 3:
@@ -117,7 +117,7 @@ public class Juego {
                         if(coordenadasCorrectas(filas, columnas)){
                            tablero.getCasilla(filas, columnas);
                             quitarBandera(filas, columnas);
-                            mostrarTablero(); 
+                            tablero.imprimirPrueba(); 
                         };
                         break;    
                         
@@ -129,7 +129,7 @@ public class Juego {
     private void descubrirCasilla(int filas, int columnas){
         if(tablero.meterCasilla(filas,columnas)==false){
             acabarJuegoMina();
-            tablero.imprimirPruebaSol();
+            tablero.imprimirPrueba();
             System.exit(0);
         };
         
@@ -176,14 +176,33 @@ public class Juego {
     }
     
       private boolean partidaGanada(){
-        boolean ganado=tablero.comprobarVictoria();
+        boolean ganado = comprobarVictoria();
         return ganado;
     }
+      
+      public boolean comprobarVictoria(){
+           boolean ganado=true;
+           for (int i = 0; i < numFilas; i++) {
+               for (int j = 0; j < numColumnas; j++) {
+                   if(tablero.getCasilla(i, j).isMina()){
+                       
+                   }else{
+                       if(tablero.getCasilla(i, j).isVisible()){
+                           
+                       }else{
+                          ganado=false; 
+                          break;
+                       }
+                   }
+               }
+           }
+           return ganado;
+}
     
     private void acabarJuegoMina(){
-        System.out.println("*******************");
-        System.out.println("    HAS PERDIDO    ");
-        System.out.println("*******************");
+        
+        System.out.println("    |game over muk|   ");
+        
     }
 
 
