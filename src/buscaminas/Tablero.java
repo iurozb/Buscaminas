@@ -121,6 +121,36 @@ public class Tablero {
     }
     
     public void getCasilla(){
-        
+        return this.tabla[fila][columna];
     }
+    public boolean meterCasilla(int filas, int columnas){
+        boolean fin=true;
+        if(tabla[filas][columnas].isMina()){
+            fin=false;
+        }
+        tabla[filas][columnas].setVisible(true);
+        
+        return fin;
+    }
+    
+    public void meterBandera(int filas, int columnas){
+        boolean fin=true;
+        if(tabla[filas][columnas].isBandera()){
+            System.out.println("La bandera ya esta puesta");
+        }else{
+            tabla[filas][columnas].setBandera(true);
+            tabla[filas][columnas].setVisible(true);
+        }
+ 
+    }
+ 
+       public void quitarBandera(int filas, int columnas){
+        boolean fin=true;
+        if(tabla[filas][columnas].isBandera()){
+            
+            tabla[filas][columnas].setBandera(false);
+            tabla[filas][columnas].setVisible(false);
+            }
+    }
+    
 }
