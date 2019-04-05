@@ -1,7 +1,7 @@
 
 package buscaminas;
 
-import java.awt.Menu;
+
 import java.util.Scanner;
 
 
@@ -58,11 +58,8 @@ public class Juego {
             try{
                 bandera=true;
                 Scanner leer = new Scanner(System.in);
-                System.out.println("**** MENU ****");
-                System.out.println("1. Descubrir casilla");
-                System.out.println("2. Poner bandera");
-                System.out.println("3. Quitar bandera");
-                System.out.println("0. Rendirse");
+                Menu.mostrarMenu();
+                
                 opcion=leer.nextInt();
             }catch(Exception e){
                 System.out.println("Error en el dato introducido");
